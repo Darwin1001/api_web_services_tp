@@ -1,0 +1,146 @@
+{
+ "info": {"name":"My Social Networks API","description":"API : http://localhost:3000. Créer d’abord les utilisateurs et éléments liés, puis remplacer ID_... et :id par les identifiants reçus. Pour un événement sans groupe, retirer groupId. POST : 201 avec l’élément créé ; GET : JSON ; PUT : élément modifié ; DELETE : 204. Erreurs : 400 (donnée invalide), 404 (id absent).","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+ "item": [
+  {
+   "name": "users",
+   "description": "Champs : firstName, lastName, email. Pour lire un élément par son id : GET /api/users/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/users","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"firstName\":\"Camille\",\"lastName\":\"Martin\",\"email\":\"camille@example.com\"}"},"url":"{{baseUrl}}/api/users","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"firstName\":\"Camille\",\"lastName\":\"Martin\",\"email\":\"camille@example.com\"}"},"url":"{{baseUrl}}/api/users/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/users/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "events",
+   "description": "Champs : name, description, startDate, endDate, place, coverPhoto, visibility, organizerIds, participantIds, groupId. Pour lire un élément par son id : GET /api/events/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/events","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"name\":\"Soirée étudiante\",\"description\":\"Rencontre des étudiants\",\"startDate\":\"2026-12-10T18:00:00\",\"endDate\":\"2026-12-10T22:00:00\",\"place\":\"Paris\",\"coverPhoto\":\"https://example.com/photo.jpg\",\"visibility\":\"public\",\"organizerIds\":[\"ID_UTILISATEUR\"],\"participantIds\":[\"ID_UTILISATEUR\"],\"groupId\":\"ID_GROUPE\"}"},"url":"{{baseUrl}}/api/events","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"name\":\"Soirée étudiante\",\"description\":\"Rencontre des étudiants\",\"startDate\":\"2026-12-10T18:00:00\",\"endDate\":\"2026-12-10T22:00:00\",\"place\":\"Paris\",\"coverPhoto\":\"https://example.com/photo.jpg\",\"visibility\":\"public\",\"organizerIds\":[\"ID_UTILISATEUR\"],\"participantIds\":[\"ID_UTILISATEUR\"],\"groupId\":\"ID_GROUPE\"}"},"url":"{{baseUrl}}/api/events/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/events/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "groups",
+   "description": "Champs : name, description, icon, coverPhoto, type, membersCanPost, membersCanCreateEvents, memberIds, adminIds. Pour lire un élément par son id : GET /api/groups/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/groups","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"name\":\"Promo Master\",\"description\":\"Groupe de la promotion\",\"icon\":\"https://example.com/icon.png\",\"coverPhoto\":\"https://example.com/cover.jpg\",\"type\":\"private\",\"membersCanPost\":true,\"membersCanCreateEvents\":true,\"memberIds\":[\"ID_UTILISATEUR\"],\"adminIds\":[\"ID_UTILISATEUR\"]}"},"url":"{{baseUrl}}/api/groups","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"name\":\"Promo Master\",\"description\":\"Groupe de la promotion\",\"icon\":\"https://example.com/icon.png\",\"coverPhoto\":\"https://example.com/cover.jpg\",\"type\":\"private\",\"membersCanPost\":true,\"membersCanCreateEvents\":true,\"memberIds\":[\"ID_UTILISATEUR\"],\"adminIds\":[\"ID_UTILISATEUR\"]}"},"url":"{{baseUrl}}/api/groups/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/groups/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "discussions",
+   "description": "Champs : name, groupId. Pour lire un élément par son id : GET /api/discussions/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/discussions","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"name\":\"Discussion générale\",\"groupId\":\"ID_GROUPE\"}"},"url":"{{baseUrl}}/api/discussions","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"name\":\"Discussion générale\",\"groupId\":\"ID_GROUPE\"}"},"url":"{{baseUrl}}/api/discussions/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/discussions/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "messages",
+   "description": "Champs : discussionId, userId, content. Pour lire un élément par son id : GET /api/messages/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/messages","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"discussionId\":\"ID_DISCUSSION\",\"userId\":\"ID_UTILISATEUR\",\"content\":\"Bonjour à tous\"}"},"url":"{{baseUrl}}/api/messages","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"discussionId\":\"ID_DISCUSSION\",\"userId\":\"ID_UTILISATEUR\",\"content\":\"Bonjour à tous\"}"},"url":"{{baseUrl}}/api/messages/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/messages/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "comments",
+   "description": "Champs : userId, content, photoId. Pour lire un élément par son id : GET /api/comments/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/comments","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"userId\":\"ID_UTILISATEUR\",\"content\":\"Merci pour l’information\",\"photoId\":\"ID_PHOTO\"}"},"url":"{{baseUrl}}/api/comments","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"userId\":\"ID_UTILISATEUR\",\"content\":\"Merci pour l’information\",\"photoId\":\"ID_PHOTO\"}"},"url":"{{baseUrl}}/api/comments/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/comments/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "albums",
+   "description": "Champs : eventId, name. Pour lire un élément par son id : GET /api/albums/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/albums","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"eventId\":\"ID_EVENEMENT\",\"name\":\"Photos de la soirée\"}"},"url":"{{baseUrl}}/api/albums","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"eventId\":\"ID_EVENEMENT\",\"name\":\"Photos de la soirée\"}"},"url":"{{baseUrl}}/api/albums/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/albums/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "photos",
+   "description": "Champs : albumId, userId, url. Pour lire un élément par son id : GET /api/photos/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/photos","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"albumId\":\"ID_ALBUM\",\"userId\":\"ID_UTILISATEUR\",\"url\":\"https://example.com/photo.jpg\"}"},"url":"{{baseUrl}}/api/photos","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"albumId\":\"ID_ALBUM\",\"userId\":\"ID_UTILISATEUR\",\"url\":\"https://example.com/photo.jpg\"}"},"url":"{{baseUrl}}/api/photos/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/photos/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "polls",
+   "description": "Champs : eventId, organizerId, name. Pour lire un élément par son id : GET /api/polls/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/polls","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"eventId\":\"ID_EVENEMENT\",\"organizerId\":\"ID_UTILISATEUR\",\"name\":\"Choix du repas\"}"},"url":"{{baseUrl}}/api/polls","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"eventId\":\"ID_EVENEMENT\",\"organizerId\":\"ID_UTILISATEUR\",\"name\":\"Choix du repas\"}"},"url":"{{baseUrl}}/api/polls/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/polls/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "questions",
+   "description": "Champs : pollId, text, options. Pour lire un élément par son id : GET /api/questions/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/questions","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"pollId\":\"ID_SONDAGE\",\"text\":\"Quel repas préférez-vous ?\",\"options\":[\"Pizza\",\"Salade\"]}"},"url":"{{baseUrl}}/api/questions","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"pollId\":\"ID_SONDAGE\",\"text\":\"Quel repas préférez-vous ?\",\"options\":[\"Pizza\",\"Salade\"]}"},"url":"{{baseUrl}}/api/questions/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/questions/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "ticketTypes",
+   "description": "Champs : eventId, name, price, quantity. Pour lire un élément par son id : GET /api/ticketTypes/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/ticketTypes","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"eventId\":\"ID_EVENEMENT\",\"name\":\"Entrée standard\",\"price\":10,\"quantity\":50}"},"url":"{{baseUrl}}/api/ticketTypes","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"eventId\":\"ID_EVENEMENT\",\"name\":\"Entrée standard\",\"price\":10,\"quantity\":50}"},"url":"{{baseUrl}}/api/ticketTypes/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/ticketTypes/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "tickets",
+   "description": "Champs : ticketTypeId, firstName, lastName, email, address, purchaseDate. Pour lire un élément par son id : GET /api/tickets/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/tickets","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"ticketTypeId\":\"ID_TYPE_BILLET\",\"firstName\":\"Alex\",\"lastName\":\"Durand\",\"email\":\"alex@example.com\",\"address\":\"10 rue de Paris, 75001 Paris\",\"purchaseDate\":\"2026-11-17\"}"},"url":"{{baseUrl}}/api/tickets","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"ticketTypeId\":\"ID_TYPE_BILLET\",\"firstName\":\"Alex\",\"lastName\":\"Durand\",\"email\":\"alex@example.com\",\"address\":\"10 rue de Paris, 75001 Paris\",\"purchaseDate\":\"2026-11-17\"}"},"url":"{{baseUrl}}/api/tickets/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/tickets/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "shoppingItems",
+   "description": "Champs : eventId, userId, name, quantity, arrivalTime. Pour lire un élément par son id : GET /api/shoppingItems/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/shoppingItems","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"eventId\":\"ID_EVENEMENT\",\"userId\":\"ID_UTILISATEUR\",\"name\":\"Boissons\",\"quantity\":2,\"arrivalTime\":\"18:30\"}"},"url":"{{baseUrl}}/api/shoppingItems","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"eventId\":\"ID_EVENEMENT\",\"userId\":\"ID_UTILISATEUR\",\"name\":\"Boissons\",\"quantity\":2,\"arrivalTime\":\"18:30\"}"},"url":"{{baseUrl}}/api/shoppingItems/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/shoppingItems/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  },
+  {
+   "name": "pollResponses",
+   "description": "Champs : questionId, participantId, option. Pour lire un élément par son id : GET /api/pollResponses/:id.",
+   "item": [
+    {"name":"Lister","request":{"method":"GET","header":[],"url":"{{baseUrl}}/api/pollResponses","description":"Renvoie la liste en JSON."}},
+    {"name":"Créer","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"questionId\":\"ID_QUESTION\",\"participantId\":\"ID_UTILISATEUR\",\"option\":\"Pizza\"}"},"url":"{{baseUrl}}/api/pollResponses","description":"Crée l’élément. La réponse contient son id."}},
+    {"name":"Modifier","request":{"method":"PUT","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"questionId\":\"ID_QUESTION\",\"participantId\":\"ID_UTILISATEUR\",\"option\":\"Pizza\"}"},"url":"{{baseUrl}}/api/pollResponses/:id","description":"Remplacer :id par l’id reçu. Envoyer tous les champs."}},
+    {"name":"Supprimer","request":{"method":"DELETE","header":[],"url":"{{baseUrl}}/api/pollResponses/:id","description":"Remplacer :id par l’id reçu. Réponse 204."}}
+   ]
+  }
+ ],
+ "variable": [{"key":"baseUrl","value":"http://localhost:3000"}]
+}

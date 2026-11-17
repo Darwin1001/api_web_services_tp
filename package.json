@@ -1,0 +1,12 @@
+{
+  "name": "my-social-networks-api",
+  "version": "1.0.0",
+  "description": "API simple de gestion d'evenements et de groupes",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
